@@ -11,7 +11,8 @@ const seedData = [
         goal: 5,
         collected: 2.3,
         is_active: true,
-        tags: ['deca', 'obrazovanje']
+        tags: ['deca', 'obrazovanje'],
+        imageUrl: 'https://hendikepmagazin.rs/wp-content/uploads/2022/08/srbizasrbe.jpg'
     },
     {
         name: 'Zdravstvena pomoć',
@@ -21,7 +22,8 @@ const seedData = [
         goal: 10,
         collected: 7.1,
         is_active: true,
-        tags: ['zdravlje', 'pomoc']
+        tags: ['zdravlje', 'pomoc'],
+        imageUrl: 'https://dzns.rs/wp-content/uploads/2015/12/Prva-pomoc.png'
     },
     {
         name: 'Pomoć porodicama iz poplavljenih područja',
@@ -31,7 +33,8 @@ const seedData = [
         goal: 15,
         collected: 15,
         is_active: false,
-        tags: ['katastrofa', 'porodice']
+        tags: ['katastrofa', 'porodice'],
+        imageUrl: 'https://static.rtv.rs/slike/2023/07/20/pomoc-porodicama-sa-troje-ili-cetvoro-dece-04.jpg'
     }
 ];
 

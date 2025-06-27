@@ -8,7 +8,8 @@ const CampaignSchema = new mongoose.Schema({
     goal: Number,
     collected: Number,
     is_active: Boolean,
-    tags: [String]
+    tags: [String],
+    imageUrl: String
 }, { timestamps: true });
 
 module.exports = mongoose.model('Campaign', CampaignSchema);
