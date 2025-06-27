@@ -21,9 +21,9 @@ connectDB();
 app.get('/api/campaigns', async (req, res) => {
     try {
         const campaigns = await Campaign.find();
-        res.json({ success: true, data: campaigns });
+        res.json(campaigns);
     } catch (err) {
-        res.status(500).json({ success: false, error: err.message });
+        res.status(500).json({ error: err.message });
     }
 });
 
@@ -33,7 +33,7 @@ app.get('/api/campaigns/:id', async (req, res) => {
         if (!campaign) {
             return res.status(404).json({ success: false, error: `Campaign not found` });
         }
-        res.json({ success: true, data: campaign });
+        res.json(campaign);
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });
     }

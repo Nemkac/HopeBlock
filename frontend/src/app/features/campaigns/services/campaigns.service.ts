@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Campaign } from '../model/campaing';
-import { environment } from '../../environments/environment';
+import { environment } from '../../../../environments/environment';
+import { Campaign } from '../../../core/models/campaing';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CampaingsService {
+export class CampaignsService {
+
   private apiUrl = `${environment.apiUrl}/campaigns`;
 
   constructor(private http: HttpClient) { }
