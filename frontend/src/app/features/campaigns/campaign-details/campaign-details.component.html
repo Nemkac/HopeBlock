@@ -1,1 +1,75 @@
-<p>{{campaign?.name}}</p>
+<div class="row g-4 m-3">
+    <div class="col-md-4 col-12">
+        <div class="card shadow-sm h-100">
+            <img [src]="campaign?.imageUrl" class="card-img-top object-fit-cover"
+                style="height: 200px; object-fit: cover;" alt="Kampanja slika" />
+
+            <div class="card-body">
+                <h5 class="card-title">{{ campaign?.name }}</h5>
+                <p class="card-text text-muted">{{ campaign?.description }}</p>
+
+                <ul class="list-group list-group-flush mb-3">
+                    <li class="list-group-item">
+                        🎯 <strong>Cilj:</strong> {{ campaign?.goal }} ETH
+                    </li>
+                    <li class="list-group-item">
+                        💰 <strong>Prikupljeno:</strong> {{ campaign?.collected }} ETH
+                    </li>
+                    <li class="list-group-item">
+                        📍 <strong>ETH:</strong>
+                        <code class="d-block text-break">{{ campaign?.eth_address }}</code>
+                    </li>
+                    <li class="list-group-item">
+                        💳 <strong>USDC:</strong>
+                        <code class="d-block text-break">{{ campaign?.usdc_address }}</code>
+                    </li>
+                    <li class="list-group-item">
+                        🏷️ <strong>Tagovi:</strong>
+                        <span *ngFor="let tag of campaign?.tags" class="badge bg-info text-dark me-1 mx-1">{{ tag }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <strong>Status:</strong>
+                        <span class="badge" [ngClass]="campaign?.is_active ? 'bg-success mx-1' : 'bg-secondary mx-1'">
+                            {{ campaign?.is_active ? 'Aktivna' : 'Neaktivna' }}
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="progress" style="height: 20px;">
+                    <div class="progress-bar" role="progressbar" [style.width.%]="getProgress()" [ngClass]="{
+                 'bg-success': campaign?.collected >= campaign?.goal,
+                 'bg-warning': campaign?.collected < campaign?.goal
+               }" [attr.aria-valuenow]="getProgress()" aria-valuemin="0" aria-valuemax="100">
+                        {{ getProgress() | number:'1.0-0' }}%
+                    </div>
+                </div>
+                <small class="text-muted d-block mt-1">
+                    {{ campaign?.collected | currency:'USD' }} od {{ campaign?.goal | currency:'USD' }}
+                </small>
+
+                <button class="btn btn-primary w-100 mt-3" (click)="donate()" [disabled]="!campaign?.is_active">
+                    Doniraj 0.01 ETH
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-12">
+        <div class="card shadow-sm h-100">
+            <div class="card-body">
+                <h5 class="card-title">⏱️ Poslednje donacije</h5>
+                <ul class="list-group">
+                    <li *ngFor="let donor of mockDonors"
+                        class="list-group-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <i class="bi bi-person-circle me-1"></i> {{ donor.name }}
+                            <br />
+                            <small class="text-muted">{{ donor.time }}</small>
+                        </div>
+                        <span class="badge bg-success">{{ donor.amount }} ETH</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

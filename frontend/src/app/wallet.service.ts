@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ethers } from 'ethers';
 import { MetaMaskInpageProvider } from '@metamask/providers';
+import { from, Observable, throwError } from 'rxjs';
 
 declare global {
   interface Window {
@@ -41,5 +42,21 @@ export class WalletService {
 
   getCurrentAddress(): Promise<string | null> {
     return this.signer?.getAddress() ?? Promise.resolve(null);
+  }
+
+  connect$(): Observable<string> {
+    if (!window.ethereum) {
+      return throwError(() => new Error('MetaMask not installed.'));
+    }
+
+    return from(this.connectWallet() as Promise<string>);
+  }
+
+  donate$(to: string, amountInEth: string): Observable<string> {
+    if (!this.signer) {
+      return throwError(() => new Error('Wallet not connected.'));
+    }
+
+    return from(this.donateETH(to, amountInEth));
   }
 }
