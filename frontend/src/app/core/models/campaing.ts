@@ -11,4 +11,5 @@ export interface Campaign {
     tags: string[];
     createdAt?: string;
     updatedAt?: string;
+    donations: any[];
 }

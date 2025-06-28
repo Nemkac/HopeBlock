@@ -20,7 +20,11 @@ export class AmountDialogComponent {
 
   submit() {
     if (this.form.valid) {
-      this.dialogRef.close(this.form.value.amount);
+      this.dialogRef.close({ save: true, amount: this.form.value.amount });
     }
+  }
+
+  close() {
+    this.dialogRef.close({ save: false });
   }
 }

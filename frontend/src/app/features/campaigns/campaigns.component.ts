@@ -26,7 +26,7 @@ export class CampaignsComponent implements OnInit {
   }
 
   getCampaigns(): void {
-    this.campaignService.getCampaigns().subscribe(
+    this.campaignService.getAllCampaigns().subscribe(
       (resposne: Campaign[]) => {
         this.campaigns = resposne;
         console.log("Fetched: ", this.campaigns);

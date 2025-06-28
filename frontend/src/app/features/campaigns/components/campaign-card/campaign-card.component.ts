@@ -27,14 +27,15 @@ export class CampaignCardComponent {
       : 0;
   }
 
+
   donate(): void {
     const dialogRef = this.dialog.open(AmountDialogComponent);
 
     dialogRef.afterClosed().pipe(
-      switchMap((amount: number) => {
-        if (!amount) return of(null);
+      switchMap((result: { amount: number, save: boolean }) => {
+        if (!result?.save || !result.amount) return of(null);
         return this.walletService.connect$().pipe(
-          switchMap(() => this.walletService.donate$(this.campaign.eth_address, amount.toString()))
+          switchMap(() => this.walletService.donate$(this.campaign.eth_address, result.amount.toString()))
         );
       }),
       catchError(() => {
