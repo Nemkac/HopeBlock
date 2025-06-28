@@ -2,6 +2,9 @@ import { Component, Input } from '@angular/core';
 import { Campaign } from '../../../../core/models/campaing';
 import { WalletService } from '../../../../wallet.service';
 import { catchError, of, switchMap } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { AmountDialogComponent } from '../amount-dialog/amount-dialog.component';
 
 @Component({
   selector: 'app-campaign-card',
@@ -11,7 +14,10 @@ import { catchError, of, switchMap } from 'rxjs';
 export class CampaignCardComponent {
   @Input() campaign!: Campaign;
 
-  constructor(private walletService: WalletService) {
+  constructor(private walletService: WalletService,
+    private dialog: MatDialog,
+    private snackBar: MatSnackBar
+  ) {
 
   }
 
@@ -22,15 +28,22 @@ export class CampaignCardComponent {
   }
 
   donate(): void {
-    this.walletService.connect$().pipe(
-      switchMap(() => this.walletService.donate$(this.campaign.eth_address, '0.01')),
-      catchError(err => {
-        alert('Greška: ' + err.message);
+    const dialogRef = this.dialog.open(AmountDialogComponent);
+
+    dialogRef.afterClosed().pipe(
+      switchMap((amount: number) => {
+        if (!amount) return of(null);
+        return this.walletService.connect$().pipe(
+          switchMap(() => this.walletService.donate$(this.campaign.eth_address, amount.toString()))
+        );
+      }),
+      catchError(() => {
+        this.snackBar.open('Greška pri slanju uplate.', 'Zatvori', { duration: 5000 });
         return of(null);
       })
     ).subscribe(hash => {
       if (hash) {
-        alert('Transakcija poslata! Hash: ' + hash);
+        this.snackBar.open('Transakcija uspešno poslata! Hash: ', 'OK', { duration: 5000 });
       }
     });
   }

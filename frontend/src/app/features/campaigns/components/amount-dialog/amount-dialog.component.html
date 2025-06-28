@@ -1,0 +1,14 @@
+<h2 mat-dialog-title>Unesi iznos za donaciju</h2>
+<form [formGroup]="form" (ngSubmit)="submit()" class="p-3">
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Iznos (ETH)</mat-label>
+        <input matInput formControlName="amount" type="number" step="0.01" min="0.01" max="100" />
+        <mat-error *ngIf="form.controls.amount.invalid">Unesite validan iznos (0.01 - 100)</mat-error>
+    </mat-form-field>
+
+    <div class="d-flex justify-content-end mt-3">
+        <button mat-button type="button" (click)="dialogRef.close()" class="mx-1">Otkaži</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid"
+            class="btn-primary">Doniraj</button>
+    </div>
+</form>
