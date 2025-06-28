@@ -43,7 +43,7 @@ export class CampaignCardComponent {
       })
     ).subscribe(hash => {
       if (hash) {
-        this.snackBar.open('Transakcija uspešno poslata! Hash: ', 'OK', { duration: 5000 });
+        this.snackBar.open('Transakcija uspešno poslata!', 'OK', { duration: 5000 });
       }
     });
   }

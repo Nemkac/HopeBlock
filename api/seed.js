@@ -6,7 +6,7 @@ const seedData = [
     {
         name: 'Humanitarna pomoć za decu',
         description: 'Kupovina školskog pribora i hrane za ugroženu decu',
-        eth_address: '0x1234abcd1234abcd1234abcd1234abcd1234abcd',
+        eth_address: '0x5e1C114f9DfCBD12fB8eEae2D3EA71833F582664',
         usdc_address: '0x9999abcd9999abcd9999abcd9999abcd9999abcd',
         goal: 5,
         collected: 2.3,
@@ -28,7 +28,7 @@ const seedData = [
     {
         name: 'Pomoć porodicama iz poplavljenih područja',
         description: 'Obezbeđivanje osnovnih sredstava za život',
-        eth_address: '0xabcd1234abcd1234abcd1234abcd1234abcd1234',
+        eth_address: '0x5D22dB17bAdAf1252eD7Fc235AFDD6f4A67C8Fb2',
         usdc_address: '0x7777abcd7777abcd7777abcd7777abcd7777abcd',
         goal: 15,
         collected: 15,

@@ -13,8 +13,12 @@
                         🎯 <strong>Cilj:</strong> {{ campaign?.goal }} ETH
                     </li>
                     <li class="list-group-item">
-                        💰 <strong>Prikupljeno:</strong> {{ campaign?.collected }} ETH
+                        💰 <strong>Prikupljeno (on-chain):</strong> {{ getTotalCollected() | number:'1.2-4' }} ETH
                     </li>
+                    <li class="list-group-item">
+                        🧾 <strong>Preostalo:</strong> {{ getAmountLeft() | number:'1.2-4' }} ETH
+                    </li>
+
                     <li class="list-group-item">
                         📍 <strong>ETH:</strong>
                         <code class="d-block text-break">{{ campaign?.eth_address }}</code>
@@ -45,7 +49,7 @@
                     </div>
                 </div>
                 <small class="text-muted d-block mt-1">
-                    {{ campaign?.collected | currency:'USD' }} od {{ campaign?.goal | currency:'USD' }}
+                    {{ getTotalCollected() | number:'1.2-4' }} od {{ campaign?.goal }} ETH
                 </small>
 
                 <button class="btn btn-primary w-100 mt-3" (click)="donate()" [disabled]="!campaign?.is_active">
@@ -60,12 +64,12 @@
             <div class="card-body">
                 <h5 class="card-title">⏱️ Poslednje donacije</h5>
                 <ul class="list-group">
-                    <li *ngFor="let donor of mockDonors"
+                    <li *ngFor="let donor of donations"
                         class="list-group-item d-flex justify-content-between align-items-center">
                         <div>
-                            <i class="bi bi-person-circle me-1"></i> {{ donor.name }}
+                            <i class="bi bi-person-circle me-1"></i> {{ donor.from }}
                             <br />
-                            <small class="text-muted">{{ donor.time }}</small>
+                            <small class="text-muted">{{ donor.timestamp | date:'short' }}</small>
                         </div>
                         <span class="badge bg-success">{{ donor.amount }} ETH</span>
                     </li>
