@@ -31,8 +31,8 @@ const seedData = [
         eth_address: '0x5D22dB17bAdAf1252eD7Fc235AFDD6f4A67C8Fb2',
         usdc_address: '0x7777abcd7777abcd7777abcd7777abcd7777abcd',
         goal: 15,
-        collected: 15,
-        is_active: false,
+        collected: 10,
+        is_active: true,
         tags: ['katastrofa', 'porodice'],
         imageUrl: 'https://static.rtv.rs/slike/2023/07/20/pomoc-porodicama-sa-troje-ili-cetvoro-dece-04.jpg'
     }

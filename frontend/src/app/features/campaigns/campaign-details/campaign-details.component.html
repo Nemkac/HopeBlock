@@ -70,6 +70,8 @@
                             <i class="bi bi-person-circle me-1"></i> {{ donor.from }}
                             <br />
                             <small class="text-muted">{{ donor.timestamp | date:'short' }}</small>
+                            <br />
+                            <a [href]="'https://sepolia.etherscan.io/tx/'+donor?.hash" target="_blank" class="text-muted">View on Etherscan</a>
                         </div>
                         <span class="badge bg-success">{{ donor.amount }} ETH</span>
                     </li>

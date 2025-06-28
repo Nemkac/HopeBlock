@@ -25,6 +25,7 @@ export class CampaignsService {
             );
             donations = donations.map(tx => ({
               from: tx.from,
+              hash: tx.hash,
               amount: ethers.formatEther(tx.value),
               timestamp: new Date(Number(tx.timeStamp) * 1000)
             }));
