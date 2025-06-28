@@ -59,4 +59,5 @@ app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
     console.log(`GET /api/campaigns -> svi aktivni humanitarni walleti iz baze`);
     console.log(`GET /api/campaigns/:id -> detalji jednog walleta iz baze`);
+    console.log(`GET /api/donations/:address -> sve donacije ka humanitornoj svrci`);
 });
