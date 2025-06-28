@@ -8,6 +8,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: auto;
+    background-color: #F0F0F0;
 }
 
 .btn-primary {
@@ -16,4 +17,303 @@ body {
 
 body {
     font-family: var(--font-main);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+  
+.poppins-thin {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.poppins-extralight {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: normal;
+}
+
+.poppins-light {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.poppins-regular {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.poppins-medium {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.poppins-semibold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.poppins-bold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.poppins-extrabold {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: normal;
+}
+
+.poppins-black {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.poppins-thin-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.poppins-extralight-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.poppins-light-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.poppins-regular-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.poppins-medium-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.poppins-semibold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-style: italic;
+}
+
+.poppins-bold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.poppins-extrabold-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-style: italic;
+}
+
+.poppins-black-italic {
+    font-family: "Poppins", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+}
+
+.global{
+    line-height: 24px;
+    font-weight: medium;
+    font-size: 16px;
+}
+
+.global-bold {
+    font-size: 16px;
+    font-weight: bold;
+    line-height: 24px;
+}
+
+.small {
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.small-bold {
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+}
+
+.big {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+.big-bold {
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 18px;
+}
+
+.jumbo {
+    font-size: 112px;
+    line-height: 112px;
+    font-weight: bold;
+}
+
+.heading-h1 {
+    font-weight: bold;
+    font-size: 80px;
+    line-height: 92px;
+}
+
+.heading-h2 {
+    font-weight: bold;
+    font-size: 52px;
+    line-height: 60px;
+}
+
+.heading-h3 {
+    font-weight: semibold;
+    font-size: 32px;
+    line-height: 36px;
+}
+
+.heading-h4 {
+    font-weight: medium;
+    font-size: 24px;
+    line-height: 32px;
+}
+
+@media (max-width: 1536px) {
+    .jumbo {
+        font-size: 100px;
+        line-height: 100px;
+    }
+    .heading-h1 {
+        font-size: 72px;
+        line-height: 80px;
+    }
+    .heading-h2 {
+        font-size: 48px;
+        line-height: 56px;
+    }
+}
+
+/* Max width 1280px - laptops */
+@media (max-width: 1280px) {
+    .big, .big-bold {
+        font-size: 22px;
+        line-height: 30px;
+    }
+    .jumbo {
+        font-size: 90px;
+        line-height: 90px;
+    }
+    .heading-h1 {
+        font-size: 64px;
+        line-height: 72px;
+    }
+    .heading-h2 {
+        font-size: 44px;
+        line-height: 52px;
+    }
+    .heading-h3 {
+        font-size: 28px;
+        line-height: 32px;
+    }
+}
+
+/* Max width 1024px - tablets */
+@media (max-width: 1024px) {
+    .big, .big-bold {
+        font-size: 20px;
+        line-height: 28px;
+    }
+    .jumbo {
+        font-size: 80px;
+        line-height: 80px;
+    }
+    .heading-h1 {
+        font-size: 56px;
+        line-height: 64px;
+    }
+    .heading-h2 {
+        font-size: 40px;
+        line-height: 48px;
+    }
+    .heading-h3 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+}
+
+/* Max width 768px - tablets and large phones */
+@media (max-width: 768px) {
+    .big, .big-bold {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    .jumbo {
+        font-size: 70px;
+        line-height: 70px;
+    }
+    .heading-h1 {
+        font-size: 44px;
+        line-height: 56px;
+    }
+    .heading-h2 {
+        font-size: 32px;
+        line-height: 44px;
+    }
+    .heading-h3 {
+        font-size: 20px;
+        line-height: 28px;
+    }
+}
+
+/* Max width 640px - phones */
+@media (max-width: 640px) {
+    .global, .global-bold {
+        font-size: 12px;
+        line-height: 22px;
+    }
+    .small, .small-bold {
+        font-size: 10px;
+        line-height: 18px;
+    }
+    .big, .big-bold {
+        font-size: 14px;
+        line-height: 24px;
+    }
+    .jumbo {
+        font-size: 44px;
+        line-height: 60px;
+    }
+    .heading-h1 {
+        font-size: 32px;
+        line-height: 48px;
+    }
+    .heading-h2 {
+        font-size: 28px;
+        line-height: 40px;
+    }
+    .heading-h3 {
+        font-size: 18px;
+        line-height: 26px;
+    }
+    .heading-h4 {
+        font-size: 16px;
+        line-height: 28px;
+    }
 }

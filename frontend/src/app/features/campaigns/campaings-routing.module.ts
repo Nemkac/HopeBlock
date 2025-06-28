@@ -4,8 +4,8 @@ import { CampaignsComponent } from './campaigns.component';
 import { CampaignDetailsComponent } from './campaign-details/campaign-details.component';
 
 const routes: Routes = [
-  { path: '', component: CampaignsComponent },
-  { path: ':id', component: CampaignDetailsComponent }
+  { path: 'campaigns', component: CampaignsComponent },
+  { path: 'campaigns/:id', component: CampaignDetailsComponent }
 ];
 
 @NgModule({

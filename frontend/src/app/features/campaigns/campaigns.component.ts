@@ -26,6 +26,7 @@ export class CampaignsComponent implements OnInit {
     this.campaignService.getAllCampaigns().subscribe(
       (response: Campaign[]) => {
         this.campaigns = response;
+        console.log("Campaigns: ", this.campaigns);
       },
       (error) => {
         this.snackbar.open(error.message, 'Ok', { duration: 5000 });
