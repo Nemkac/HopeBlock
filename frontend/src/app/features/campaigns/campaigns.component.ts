@@ -2,7 +2,6 @@ import { Component, Input, OnInit } from '@angular/core';
 import { WalletService } from '../../wallet.service';
 import { CampaignsService } from './services/campaigns.service';
 import { Campaign } from '../../core/models/campaing';
-import { HttpErrorResponse } from '@angular/common/http';
 
 
 @Component({
@@ -27,27 +26,12 @@ export class CampaignsComponent implements OnInit {
 
   getCampaigns(): void {
     this.campaignService.getAllCampaigns().subscribe(
-      (resposne: Campaign[]) => {
-        this.campaigns = resposne;
-        console.log("Fetched: ", this.campaigns);
+      (response: Campaign[]) => {
+        this.campaigns = response;
       },
-      (error: HttpErrorResponse) => {
-        alert(`Error while fetching campaigns: ${error.error}`);
+      (error) => {
+        alert(`Error while fetching campaigns: ${error.message || error}`);
       }
-    )
-  }
-
-  connect() {
-    this.wallet.connectWallet().then(address => {
-      if (address) {
-        console.log('Povezan sa:', address);
-      }
-    });
-  }
-
-  donate() {
-    this.wallet.donateETH(this.eth_address, '0.01')
-      .then(tx => alert('Donacija poslata! Tx hash: ' + tx))
-      .catch(err => alert('Greška: ' + err.message));
+    );
   }
 }

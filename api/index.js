@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const axios = require('axios')
 require('dotenv').config();
 const connectDB = require('./db');
 const Campaign = require('./models/Campaign');
@@ -36,6 +37,21 @@ app.get('/api/campaigns/:id', async (req, res) => {
         res.json(campaign);
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY;
+const SEPHOLA_BASE_URL = 'https://api-sepolia.etherscan.io/api';
+
+app.get('/api/donations/:address', async (req, res) => {
+    const address = req.params.address;
+    try {
+        const url = `${SEPHOLA_BASE_URL}?module=account&action=txlist&address=${address}&startblock=0&endblock=99999999&page=1&offset=20&sort=desc&apikey=${ETHERSCAN_API_KEY}`;
+        const { data } = await axios.get(url);
+        const filtered = data.result.filter(tx => tx.to?.toLowerCase() === address.toLowerCase());
+        res.json(filtered);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
     }
 });
 
