@@ -73,13 +73,6 @@ export class CampaignDetailsComponent implements OnInit {
       : 0;
   }
 
-  mockDonors = [
-    { name: 'Milan M.', amount: '0.02', time: 'pre 5 minuta' },
-    { name: 'Jovana P.', amount: '0.01', time: 'pre 15 minuta' },
-    { name: 'Nebojsa V.', amount: '0.05', time: 'pre 1 sat' },
-    { name: 'Anonimni', amount: '0.10', time: 'juče' },
-  ];
-
   getTotalCollected(): number {
     if (!this.campaign?.donations?.length) return 0;
 

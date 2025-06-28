@@ -27,7 +27,6 @@ export class CampaignCardComponent {
       : 0;
   }
 
-
   donate(): void {
     const dialogRef = this.dialog.open(AmountDialogComponent);
 

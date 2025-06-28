@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { WalletService } from '../../wallet.service';
 import { CampaignsService } from './services/campaigns.service';
 import { Campaign } from '../../core/models/campaing';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -11,13 +12,10 @@ import { Campaign } from '../../core/models/campaing';
   styleUrl: './campaigns.component.css'
 })
 export class CampaignsComponent implements OnInit {
-  @Input() eth_address: string = '0x5D22dB17bAdAf1252eD7Fc235AFDD6f4A67C8Fb2';
-  @Input() name!: string;
-
   campaigns: Campaign[] = [];
 
-  constructor(private wallet: WalletService,
-    private campaignService: CampaignsService
+  constructor(private campaignService: CampaignsService,
+    private snackbar: MatSnackBar
   ) { }
 
   ngOnInit(): void {
@@ -30,7 +28,7 @@ export class CampaignsComponent implements OnInit {
         this.campaigns = response;
       },
       (error) => {
-        alert(`Error while fetching campaigns: ${error.message || error}`);
+        this.snackbar.open(error.message, 'Ok', { duration: 5000 });
       }
     );
   }
