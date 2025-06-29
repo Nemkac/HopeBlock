@@ -31,10 +31,16 @@ export class CampaignCardComponent {
     const dialogRef = this.dialog.open(AmountDialogComponent);
 
     dialogRef.afterClosed().pipe(
-      switchMap((result: { amount: number, save: boolean }) => {
+      switchMap((result: { amount: number, save: boolean, token: any }) => {
         if (!result?.save || !result.amount) return of(null);
+        const toAddress = this.campaign!.eth_address;
         return this.walletService.connect$().pipe(
-          switchMap(() => this.walletService.donate$(this.campaign.eth_address, result.amount.toString()))
+          switchMap(() => this.walletService.donate(
+            result.token.tokenType,
+            toAddress,
+            result.amount.toString(),
+            result.token.tokenAddress
+          ))
         );
       }),
       catchError(() => {

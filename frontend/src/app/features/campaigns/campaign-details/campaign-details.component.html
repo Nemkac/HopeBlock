@@ -24,10 +24,6 @@
                         <code class="d-block text-break">{{ campaign?.eth_address }}</code>
                     </li>
                     <li class="list-group-item">
-                        💳 <strong>USDC:</strong>
-                        <code class="d-block text-break">{{ campaign?.usdc_address }}</code>
-                    </li>
-                    <li class="list-group-item">
                         <strong>Tags:</strong>
                         <span *ngFor="let tag of campaign?.tags" class="badge bg-info text-dark me-1 mx-1">{{ tag
                             }}</span>
@@ -51,14 +47,6 @@
                 <small class="text-muted d-block mt-1">
                     {{ getTotalCollected() | number:'1.2-4' }} of {{ campaign?.goal }} ETH
                 </small>
-
-                <div class="mb-3">
-                    <label for="tokenSelect" class="form-label">Choose token</label>
-                    <select id="tokenSelect" class="form-select" [(ngModel)]="selectedToken">
-                        <option *ngFor="let token of tokens" [ngValue]="token">{{ token.name }}</option>
-                    </select>
-                </div>
-
                 <button class="btn btn-primary w-100 mt-3" (click)="donate()" [disabled]="!campaign?.is_active">
                     Donate
                 </button>

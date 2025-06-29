@@ -4,7 +4,6 @@ const CampaignSchema = new mongoose.Schema({
     name: String,
     description: String,
     eth_address: String,
-    usdc_address: String,
     goal: Number,
     collected: Number,
     is_active: Boolean,

@@ -25,12 +25,6 @@ export class CampaignDetailsComponent implements OnInit {
 
   campaignId: string | null = null;
   campaign: Campaign | null = null;
-  tokens: Token[] = [
-    { name: 'Ethereum (ETH)', tokenType: 'ETH' },
-    { name: 'USDC (Goerli)', tokenType: 'ERC20', tokenAddress: '0x07865c6e87b9f70255377e024ace6630c1eaa37f' }
-  ];
-
-  selectedToken: Token = this.tokens[0];
 
   constructor(private route: ActivatedRoute,
     private campaignService: CampaignsService,
@@ -60,18 +54,17 @@ export class CampaignDetailsComponent implements OnInit {
 
   donate(): void {
     const dialogRef = this.dialog.open(AmountDialogComponent);
-    const toAddress = this.selectedToken.tokenType === 'ETH'
-      ? this.campaign!.eth_address
-      : this.campaign!.usdc_address;
+
     dialogRef.afterClosed().pipe(
-      switchMap((result: { amount: number, save: boolean }) => {
+      switchMap((result: { amount: number, save: boolean, token: any }) => {
         if (!result?.save || !result.amount) return of(null);
+        const toAddress = this.campaign!.eth_address;
         return this.walletService.connect$().pipe(
           switchMap(() => this.walletService.donate(
-            this.selectedToken.tokenType,
+            result.token.tokenType,
             toAddress,
             result.amount.toString(),
-            this.selectedToken.tokenAddress
+            result.token.tokenAddress
           ))
         );
       }),
