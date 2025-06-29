@@ -191,16 +191,16 @@ dist
 .history
 .ionide
 
-/cache
-/artifacts
+api/cache
+api/artifacts
 
 # TypeChain files
-/typechain
-/typechain-types
+api/typechain
+api/typechain-types
 
 # solidity-coverage files
-/coverage
-/coverage.json
+api/coverage
+api/coverage.json
 
 # Hardhat Ignition default folder for deployments against a local node
 ignition/deployments/chain-31337
