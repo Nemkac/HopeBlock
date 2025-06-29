@@ -20,15 +20,9 @@ export class CampaignsService {
         this.getDonations(campaign.eth_address).pipe(
           map(donations => {
             const collected = donations.reduce(
-              (sum, tx) => sum + parseFloat(ethers.formatEther(tx.value)),
+              (sum, tx) => sum + parseFloat(tx.amount),
               0
             );
-            donations = donations.map(tx => ({
-              from: tx.from,
-              hash: tx.hash,
-              amount: ethers.formatEther(tx.value),
-              timestamp: new Date(Number(tx.timeStamp) * 1000)
-            }));
             return { ...campaign, donations, collected };
           })
         )
@@ -43,14 +37,9 @@ export class CampaignsService {
           this.getDonations(c.eth_address).pipe(
             map(donations => {
               const collected = donations.reduce(
-                (sum, tx) => sum + parseFloat(ethers.formatEther(tx.value)),
+                (sum, tx) => sum + parseFloat(tx.amount),
                 0
               );
-              donations = donations.map(tx => ({
-                from: tx.from,
-                amount: ethers.formatEther(tx.value),
-                timestamp: new Date(Number(tx.timeStamp) * 1000)
-              }));
               return { ...c, donations, collected };
             })
           )

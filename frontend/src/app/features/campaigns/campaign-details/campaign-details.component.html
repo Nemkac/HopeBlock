@@ -45,7 +45,7 @@
                     </div>
                 </div>
                 <small class="text-muted d-block mt-1">
-                    {{ getTotalCollected() | number:'1.2-4' }} of {{ campaign?.goal }} ETH
+                    {{ getTotalCollected() | number:'1.2-4' }} of {{ campaign?.goal }} Tokens
                 </small>
                 <button class="btn btn-primary w-100 mt-3" (click)="donate()" [disabled]="!campaign?.is_active">
                     Donate
@@ -63,14 +63,16 @@
                     <li *ngFor="let donor of campaign?.donations"
                         class="list-group-item d-flex justify-content-between align-items-center">
                         <div>
-                            <i class="bi bi-person-circle me-1"></i> {{ donor.from }}
+                            <i class="bi bi-person-circle me-1"></i> {{ donor.from !==
+                            '0x0000000000000000000000000000000000000000' ? donor.from : 'Token faucet (mint)' }}
+
                             <br />
                             <small class="text-muted">{{ donor.timestamp | date:'short' }}</small>
                             <br />
                             <a [href]="'https://sepolia.etherscan.io/tx/'+donor?.hash" target="_blank"
                                 class="text-muted">View on Etherscan</a>
                         </div>
-                        <span class="badge bg-success">{{ donor.amount }} ETH</span>
+                        <span class="badge bg-success">{{ donor.amount }} {{ donor.tokenSymbol }}</span>
                     </li>
                 </ul>
             </div>

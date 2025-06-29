@@ -14,16 +14,6 @@ const seedData = [
         imageUrl: 'https://hendikepmagazin.rs/wp-content/uploads/2022/08/srbizasrbe.jpg'
     },
     {
-        name: 'Zdravstvena pomoć',
-        description: 'Sakupljanje sredstava za terapije i lekove',
-        eth_address: '0x5678abcd5678abcd5678abcd5678abcd5678abcd',
-        goal: 10,
-        collected: 7.1,
-        is_active: true,
-        tags: ['Health', 'Help'],
-        imageUrl: 'https://dzns.rs/wp-content/uploads/2015/12/Prva-pomoc.png'
-    },
-    {
         name: 'Pomoć porodicama iz poplavljenih područja',
         description: 'Obezbeđivanje osnovnih sredstava za život',
         eth_address: '0x5D22dB17bAdAf1252eD7Fc235AFDD6f4A67C8Fb2',
