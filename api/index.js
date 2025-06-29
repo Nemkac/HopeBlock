@@ -52,22 +52,26 @@ app.get('/api/donations/:address', async (req, res) => {
 
         const tokenUrl = `${SEPOLIA_BASE_URL}?module=account&action=tokentx&address=${address}&startblock=0&endblock=99999999&page=1&offset=50&sort=desc&apikey=${ETHERSCAN_API_KEY}`;
         const { data: tokenData } = await axios.get(tokenUrl);
-        const tokenTxs = tokenData.result?.filter(tx => tx.to?.toLowerCase() === address) ?? [];
+        console.log("TOKENDATA: ", tokenData);
 
-        const formatTx = tx => ({
-            hash: tx.hash,
-            from: tx.from,
-            to: tx.to,
-            amount: tx.value / 1e18,
-            tokenSymbol: tx.tokenSymbol || 'ETH',
-            timestamp: new Date(tx.timeStamp * 1000)
-        });
+        if (tokenData.message !== "NOTOK") {
+            const tokenTxs = tokenData.result.filter(tx => tx.to?.toLowerCase() === address) ?? [];
 
-        const allTxs = [...ethTxs, ...tokenTxs].map(formatTx).sort(
-            (a, b) => b.timestamp - a.timestamp
-        );
+            const formatTx = tx => ({
+                hash: tx.hash,
+                from: tx.from,
+                to: tx.to,
+                amount: tx.value / 1e18,
+                tokenSymbol: tx.tokenSymbol || 'ETH',
+                timestamp: new Date(tx.timeStamp * 1000)
+            });
 
-        res.json(allTxs);
+            const allTxs = [...ethTxs, ...tokenTxs].map(formatTx).sort(
+                (a, b) => b.timestamp - a.timestamp
+            );
+
+            res.json(allTxs);
+        }
     } catch (err) {
         console.error('Error fetching donations:', err.message);
         res.status(500).json({ error: 'Greška pri dohvaćanju transakcija' });
