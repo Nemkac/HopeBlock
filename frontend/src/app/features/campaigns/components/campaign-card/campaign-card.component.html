@@ -1,53 +1,43 @@
-<div class="card shadow-sm rounded-4 p-4 h-100">
-  <!-- Image, Title, Date -->
+<div class="card shadow-sm rounded-4 p-4 h-100 d-flex flex-column">
   <div class="d-flex flex-column flex-md-row align-items-start gap-3 mb-3">
-    <img [src]="campaign.imageUrl"
-         alt="{{ campaign.name }}"
-         class="rounded-4"
-         style="width: 80px; height: 80px; object-fit: cover;" />
+    <img [src]="campaign.imageUrl" alt="{{ campaign.name }}" class="rounded-4"
+      style="width: 80px; height: 80px; object-fit: cover;" />
 
     <div>
       <h5 class="mb-1 fw-semibold">{{ campaign.name }}</h5>
-      <small class="text-muted">Kreirano: {{ campaign.createdAt | date: 'dd/MM/yyyy \'u\' HH:mm' }}</small>
+      <small class="text-muted">Created: {{ campaign.createdAt | date: 'dd/MM/yyyy \'u\' HH:mm' }}</small>
     </div>
   </div>
 
-  <!-- Description -->
   <p class="text-muted mb-3">{{ campaign.description }}</p>
 
-  <!-- Progress Bar -->
   <div class="mb-3">
     <div class="progress" style="height: 18px; border-radius: 12px;">
-      <div class="progress-bar text-dark fw-semibold"
-           [style.width.%]="getProgress()"
-           [ngClass]="{
+      <div class="progress-bar text-dark fw-semibold" [style.width.%]="getProgress()" [ngClass]="{
              'bg-success': campaign.collected >= campaign.goal,
              'bg-warning': campaign.collected < campaign.goal
-           }"
-           [attr.aria-valuenow]="getProgress()" aria-valuemin="0" aria-valuemax="100">
+           }" [attr.aria-valuenow]="getProgress()" aria-valuemin="0" aria-valuemax="100">
         {{ getProgress() | number:'1.0-0' }}%
       </div>
     </div>
     <small class="text-muted mt-2 d-block">
-      {{ campaign.collected }} od {{ campaign.goal }} ETH
+      {{ campaign.collected }} of {{ campaign.goal }} ETH
     </small>
   </div>
 
-  <!-- Wallets section -->
   <div class="mb-3 small text-break">
     <p class="mb-1">
-      <strong>ETH adresa:</strong><br />
+      <strong>ETH address:</strong><br />
       {{ campaign.eth_address }}
     </p>
     <p class="mb-0">
-      <strong>USDC adresa:</strong><br />
+      <strong>USDC address:</strong><br />
       {{ campaign.usdc_address }}
     </p>
   </div>
 
-  <!-- Row: Details & Donate -->
-  <div class="d-flex justify-content-between align-items-center mt-3">
-    <span class="text-primary fw-medium cursor-pointer" [routerLink]="[campaign._id]">Detalji</span>
-    <button class="btn btn-primary rounded-pill px-4" (click)="donate()">Doniraj</button>
+  <div class="d-flex justify-content-between align-items-center mt-auto pt-3">
+    <span class="text-primary fw-medium details-btn" [routerLink]="[campaign._id]">Details</span>
+    <button class="btn btn-primary rounded-pill px-4" (click)="donate()">Donate</button>
   </div>
 </div>

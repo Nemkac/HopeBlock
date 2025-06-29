@@ -10,13 +10,13 @@
 
                 <ul class="list-group list-group-flush mb-3">
                     <li class="list-group-item">
-                        🎯 <strong>Cilj:</strong> {{ campaign?.goal }} ETH
+                        🎯 <strong>Goal:</strong> {{ campaign?.goal }} ETH
                     </li>
                     <li class="list-group-item">
-                        💰 <strong>Prikupljeno (on-chain):</strong> {{ getTotalCollected() | number:'1.2-4' }} ETH
+                        💰 <strong>Collected (on-chain):</strong> {{ getTotalCollected() | number:'1.2-4' }} ETH
                     </li>
                     <li class="list-group-item">
-                        🧾 <strong>Preostalo:</strong> {{ getAmountLeft() | number:'1.2-4' }} ETH
+                        🧾 <strong>Left:</strong> {{ getAmountLeft() | number:'1.2-4' }} ETH
                     </li>
 
                     <li class="list-group-item">
@@ -28,14 +28,14 @@
                         <code class="d-block text-break">{{ campaign?.usdc_address }}</code>
                     </li>
                     <li class="list-group-item">
-                        🏷️ <strong>Tagovi:</strong>
+                        <strong>Tags:</strong>
                         <span *ngFor="let tag of campaign?.tags" class="badge bg-info text-dark me-1 mx-1">{{ tag
                             }}</span>
                     </li>
                     <li class="list-group-item">
                         <strong>Status:</strong>
                         <span class="badge" [ngClass]="campaign?.is_active ? 'bg-success mx-1' : 'bg-secondary mx-1'">
-                            {{ campaign?.is_active ? 'Aktivna' : 'Neaktivna' }}
+                            {{ campaign?.is_active ? 'Active' : 'Inactive' }}
                         </span>
                     </li>
                 </ul>
@@ -49,12 +49,20 @@
                     </div>
                 </div>
                 <small class="text-muted d-block mt-1">
-                    {{ getTotalCollected() | number:'1.2-4' }} od {{ campaign?.goal }} ETH
+                    {{ getTotalCollected() | number:'1.2-4' }} of {{ campaign?.goal }} ETH
                 </small>
 
+                <div class="mb-3">
+                    <label for="tokenSelect" class="form-label">Choose token</label>
+                    <select id="tokenSelect" class="form-select" [(ngModel)]="selectedToken">
+                        <option *ngFor="let token of tokens" [ngValue]="token">{{ token.name }}</option>
+                    </select>
+                </div>
+
                 <button class="btn btn-primary w-100 mt-3" (click)="donate()" [disabled]="!campaign?.is_active">
-                    Doniraj
+                    Donate
                 </button>
+
             </div>
         </div>
     </div>
@@ -62,7 +70,7 @@
     <div class="col-md-8 col-12">
         <div class="card shadow-sm h-100">
             <div class="card-body">
-                <h5 class="card-title">⏱️ Poslednje donacije</h5>
+                <h5 class="card-title">⏱️ Donations</h5>
                 <ul class="list-group">
                     <li *ngFor="let donor of campaign?.donations"
                         class="list-group-item d-flex justify-content-between align-items-center">
@@ -71,7 +79,8 @@
                             <br />
                             <small class="text-muted">{{ donor.timestamp | date:'short' }}</small>
                             <br />
-                            <a [href]="'https://sepolia.etherscan.io/tx/'+donor?.hash" target="_blank" class="text-muted">View on Etherscan</a>
+                            <a [href]="'https://sepolia.etherscan.io/tx/'+donor?.hash" target="_blank"
+                                class="text-muted">View on Etherscan</a>
                         </div>
                         <span class="badge bg-success">{{ donor.amount }} ETH</span>
                     </li>

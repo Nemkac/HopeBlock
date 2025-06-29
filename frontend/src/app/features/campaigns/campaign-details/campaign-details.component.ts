@@ -9,6 +9,13 @@ import { AmountDialogComponent } from '../components/amount-dialog/amount-dialog
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
+
+interface Token {
+  name: string;
+  tokenType: 'ETH' | 'ERC20';
+  tokenAddress?: string;
+}
+
 @Component({
   selector: 'app-campaign-details',
   templateUrl: './campaign-details.component.html',
@@ -18,6 +25,12 @@ export class CampaignDetailsComponent implements OnInit {
 
   campaignId: string | null = null;
   campaign: Campaign | null = null;
+  tokens: Token[] = [
+    { name: 'Ethereum (ETH)', tokenType: 'ETH' },
+    { name: 'USDC (Goerli)', tokenType: 'ERC20', tokenAddress: '0x07865c6e87b9f70255377e024ace6630c1eaa37f' }
+  ];
+
+  selectedToken: Token = this.tokens[0];
 
   constructor(private route: ActivatedRoute,
     private campaignService: CampaignsService,
@@ -47,21 +60,28 @@ export class CampaignDetailsComponent implements OnInit {
 
   donate(): void {
     const dialogRef = this.dialog.open(AmountDialogComponent);
-
+    const toAddress = this.selectedToken.tokenType === 'ETH'
+      ? this.campaign!.eth_address
+      : this.campaign!.usdc_address;
     dialogRef.afterClosed().pipe(
       switchMap((result: { amount: number, save: boolean }) => {
         if (!result?.save || !result.amount) return of(null);
         return this.walletService.connect$().pipe(
-          switchMap(() => this.walletService.donate$(this.campaign.eth_address, result.amount.toString()))
+          switchMap(() => this.walletService.donate(
+            this.selectedToken.tokenType,
+            toAddress,
+            result.amount.toString(),
+            this.selectedToken.tokenAddress
+          ))
         );
       }),
       catchError(() => {
-        this.snackBar.open('Greška pri slanju uplate.', 'Zatvori', { duration: 5000 });
+        this.snackBar.open('Error while sending transaction.', 'Clsoe', { duration: 5000 });
         return of(null);
       })
     ).subscribe(hash => {
       if (hash) {
-        this.snackBar.open('Transakcija uspešno poslata!', 'OK', { duration: 5000 });
+        this.snackBar.open('Transaction sent successfully.', 'OK', { duration: 5000 });
       }
     });
   }

@@ -11,7 +11,7 @@ const seedData = [
         goal: 5,
         collected: 2.3,
         is_active: true,
-        tags: ['deca', 'obrazovanje'],
+        tags: ['Children', 'Education'],
         imageUrl: 'https://hendikepmagazin.rs/wp-content/uploads/2022/08/srbizasrbe.jpg'
     },
     {
@@ -22,7 +22,7 @@ const seedData = [
         goal: 10,
         collected: 7.1,
         is_active: true,
-        tags: ['zdravlje', 'pomoc'],
+        tags: ['Health', 'Help'],
         imageUrl: 'https://dzns.rs/wp-content/uploads/2015/12/Prva-pomoc.png'
     },
     {
@@ -33,7 +33,7 @@ const seedData = [
         goal: 15,
         collected: 10,
         is_active: true,
-        tags: ['katastrofa', 'porodice'],
+        tags: ['Catastrophy', 'families'],
         imageUrl: 'https://static.rtv.rs/slike/2023/07/20/pomoc-porodicama-sa-troje-ili-cetvoro-dece-04.jpg'
     }
 ];

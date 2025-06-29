@@ -38,12 +38,12 @@ export class CampaignCardComponent {
         );
       }),
       catchError(() => {
-        this.snackBar.open('Greška pri slanju uplate.', 'Zatvori', { duration: 5000 });
+        this.snackBar.open('Error while sending transaction.', 'Close', { duration: 5000 });
         return of(null);
       })
     ).subscribe(hash => {
       if (hash) {
-        this.snackBar.open('Transakcija uspešno poslata!', 'OK', { duration: 5000 });
+        this.snackBar.open('Transaction sent successfully.', 'OK', { duration: 5000 });
       }
     });
   }
