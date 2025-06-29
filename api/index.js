@@ -10,14 +10,13 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-    origin: 'http://localhost:4200',
+    origin: process.env.ORIGIN,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
 app.use(express.json());
 
 connectDB();
-
 
 app.get('/api/campaigns', async (req, res) => {
     try {
