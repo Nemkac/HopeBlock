@@ -44,7 +44,7 @@ export class CampaignCardComponent {
         );
       }),
       catchError(() => {
-        this.snackBar.open('Error while sending transaction.', 'Close', { duration: 5000 });
+        this.snackBar.open('Transaction cancelled.', 'Close', { duration: 5000 });
         return of(null);
       })
     ).subscribe(hash => {

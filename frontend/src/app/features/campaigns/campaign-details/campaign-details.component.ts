@@ -69,7 +69,7 @@ export class CampaignDetailsComponent implements OnInit {
         );
       }),
       catchError(() => {
-        this.snackBar.open('Error while sending transaction.', 'Clsoe', { duration: 5000 });
+        this.snackBar.open('Transaction cancelled.', 'Close', { duration: 5000 });
         return of(null);
       })
     ).subscribe(hash => {
