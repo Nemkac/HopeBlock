@@ -1,39 +1,53 @@
 # HopeBlock
 
-- Open-source crypto wallet koji pordžava multi chain, non custodial korisnike. Fokus ove aplikacije je na donacijama i transparentnosti.
-- Uz pomoć MetaMask-a omogućavamo korisnicima da doniraju kripto iz bilo koje mreže jednim klikom.
-- Pomoću Etherscan-a, korisnici mogu videti sve donacije za selektovanu humanitarnu svrhu.
+HopeBlock is an open-source, non-custodial multi-chain crypto wallet focused on **charitable donations and transparency**.
 
+* Powered by **MetaMask**, users can donate crypto with a single click from any supported network.
+* With **Etherscan integration**, donors can view all on-chain donation activity for each selected humanitarian campaign.
 
-## Kako pokrenuti
+---
+
+## Contributors
+- Nebojša Vuga
+- Nemanja Todorović
+
+## How to Run
 
 ### Backend
-- Otvoriti terminal
-- Pozicionirati se u folder HopeBlock/api
-- Pokrenuti sledeće komande
-```
+
+```bash
+cd HopeBlock/api
 npm install
 npm run dev
 ```
+
 ### Frontend
-- Otvoriti drugi terminal
-- Pozicionirati se u folder HopeBlock/frontend
-- Pokrenuti sledeće komande
-```
+
+```bash
+cd HopeBlock/frontend
 npm install
 ng serve
 ```
-- Pokrenuti aplikaciju na: localhost:4200
-## Funkcionalnosti
 
-- Prikaz dobrotvornih svrha
-- Prikaz pojedinačne dobrotvorne svrhe
-- Doniranje kripto valuta dobrotvornim svrhama iz razlčitih mreža.
-- Non-Custodial wallet bez registracije.
-- Istorija svake donacije sa hash-om i linkom ka block exploreru.
+Access the app at: `http://localhost:4200`
 
-## Tehnologije
+---
 
-- Frontend: Angular
-- Backend: Node.js
-- Baza: MongoDb
+## ✨ Features
+
+* Browse a list of active humanitarian campaigns
+* View detailed info for each campaign
+* Donate crypto (ETH / ERC-20 like USDC) from multiple networks
+* Fully **non-custodial**: no login, no registration, wallet remains in user control
+* Track donation history with transaction hashes and Etherscan links
+* Custom test USDC token deployed via a Solidity smart contract
+
+---
+
+## Technologies Used
+
+* **Frontend**: Angular
+* **Backend**: Node.js (Express)
+* **Database**: MongoDB
+* **Smart Contracts**: Solidity (for test USDC token)
+* **Blockchain Integration**: ethers.js, MetaMask, Etherscan API
