@@ -1,5 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { WalletService } from '../../wallet.service';
+import { Component, OnInit } from '@angular/core';
 import { CampaignsService } from './services/campaigns.service';
 import { Campaign } from '../../core/models/campaing';
 import { MatSnackBar } from '@angular/material/snack-bar';
