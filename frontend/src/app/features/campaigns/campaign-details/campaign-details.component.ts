@@ -9,13 +9,6 @@ import { AmountDialogComponent } from '../components/amount-dialog/amount-dialog
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
-
-interface Token {
-  name: string;
-  tokenType: 'ETH' | 'ERC20';
-  tokenAddress?: string;
-}
-
 @Component({
   selector: 'app-campaign-details',
   templateUrl: './campaign-details.component.html',
@@ -38,7 +31,6 @@ export class CampaignDetailsComponent implements OnInit {
       this.campaignId = idFromRoute;
       this.getCampaign();
     }
-
   }
 
   getCampaign(): void {
