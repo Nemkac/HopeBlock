@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Campaign } from '../../../../core/models/campaing';
-import { WalletService } from '../../../../wallet.service';
+import { WalletService } from '../../../../core/services/wallet.service';
 import { catchError, of, switchMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';

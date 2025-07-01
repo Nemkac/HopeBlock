@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { CampaignsService } from '../services/campaigns.service';
 import { Campaign } from '../../../core/models/campaing';
 import { HttpErrorResponse } from '@angular/common/http';
-import { WalletService } from '../../../wallet.service';
+import { WalletService } from '../../../core/services/wallet.service';
 import { switchMap, catchError, of } from 'rxjs';
 import { AmountDialogComponent } from '../components/amount-dialog/amount-dialog.component';
 import { MatDialog } from '@angular/material/dialog';

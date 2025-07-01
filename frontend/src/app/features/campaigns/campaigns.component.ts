@@ -4,9 +4,7 @@ import { Campaign } from '../../core/models/campaing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateCampaignDialogComponent } from './components/create-campaign-dialog/create-campaign-dialog.component';
-import { WalletService } from '../../wallet.service';
-import { firstValueFrom } from 'rxjs';
-
+import { WalletService } from '../../core/services/wallet.service';
 
 @Component({
   selector: 'app-campaigns',

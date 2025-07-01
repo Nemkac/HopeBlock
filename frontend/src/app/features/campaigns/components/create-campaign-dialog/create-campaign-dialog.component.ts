@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ethers } from 'ethers';
-import { WalletService } from '../../../../wallet.service';
+import { WalletService } from '../../../../core/services/wallet.service';
 import { CampaignsService } from '../../services/campaigns.service';
 
 @Component({

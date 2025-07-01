@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { WalletService } from './wallet.service';
+import { WalletService } from './core/services/wallet.service';
 import { SharedModule } from './shared/shared.module';
 
 @Component({
