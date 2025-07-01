@@ -31,7 +31,6 @@ export class CampaignsComponent implements OnInit {
   async ngOnInit() {
     await this.walletService.connectWallet();
     this.ethAddress = await this.walletService.getCurrentAddress();
-    console.log(this.ethAddress);
     this.getCampaigns();
   }
 

@@ -61,11 +61,11 @@ export class CampaignCardComponent {
     if (!confirm('Are you sure you want to delete this campaign?')) return;
 
     this.campaignService.deleteCampaign(this.campaign._id).subscribe(
-      (response: any) => {
+      () => {
         this.deleted.emit(this.campaign._id);
       },
-      (error: HttpErrorResponse) => {
-        console.log("Error while deleting campaign: ", error.error);
+      (_error: HttpErrorResponse) => {
+        this.snackBar.open('Error while deleting campaign', 'Ok', { duration: 5000 });
       }
     )
   }

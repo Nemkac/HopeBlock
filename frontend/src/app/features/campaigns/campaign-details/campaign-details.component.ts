@@ -45,8 +45,8 @@ export class CampaignDetailsComponent implements OnInit {
           this.isMine = true;
         }
       },
-      (error: HttpErrorResponse) => {
-        console.log("Error while fetching campaign: ", error.error);
+      (_error: HttpErrorResponse) => {
+        this.snackBar.open('Error while fetching campaign', 'Ok', { duration: 5000 });
       }
     )
   }
