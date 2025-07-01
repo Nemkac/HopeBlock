@@ -1,4 +1,3 @@
-// loading.interceptor.ts
 import { Injectable } from '@angular/core';
 import {
     HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
