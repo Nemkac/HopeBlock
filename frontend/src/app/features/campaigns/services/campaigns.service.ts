@@ -83,4 +83,8 @@ export class CampaignsService {
     return this.http.post<Campaign>(`${this.apiUrl}/create`, campaignData);
   }
 
+  deleteCampaign(id: string): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/delete/${id}`);
+  }
+
 }

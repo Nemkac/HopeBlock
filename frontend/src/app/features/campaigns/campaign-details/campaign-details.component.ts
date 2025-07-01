@@ -18,6 +18,8 @@ export class CampaignDetailsComponent implements OnInit {
 
   campaignId: string | null = null;
   campaign: Campaign | null = null;
+  ethAddress: string = '';
+  isMine: boolean = false;
 
   constructor(private route: ActivatedRoute,
     private campaignService: CampaignsService,
@@ -25,7 +27,9 @@ export class CampaignDetailsComponent implements OnInit {
     private dialog: MatDialog,
     private snackBar: MatSnackBar) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.walletService.connectWallet();
+    this.ethAddress = await this.walletService.getCurrentAddress();
     const idFromRoute = this.route.snapshot.paramMap.get('id');
     if (idFromRoute) {
       this.campaignId = idFromRoute;
@@ -37,6 +41,9 @@ export class CampaignDetailsComponent implements OnInit {
     this.campaignService.getCampaignById(this.campaignId).subscribe(
       (response: Campaign) => {
         this.campaign = response;
+        if (this.campaign.eth_address.toLowerCase() === this.ethAddress.toLowerCase()) {
+          this.isMine = true;
+        }
       },
       (error: HttpErrorResponse) => {
         console.log("Error while fetching campaign: ", error.error);

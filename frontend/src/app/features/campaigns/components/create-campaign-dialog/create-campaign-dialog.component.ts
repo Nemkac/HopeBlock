@@ -71,7 +71,11 @@ export class CreateCampaignDialogComponent implements OnInit {
       },
       error: (err) => {
         console.error('Campaign creation failed', err);
-        alert('Error creating campaign: ' + err.message);
+        if (err.status === 409) {
+          alert('A campaign with this ETH address already exists!');
+        } else {
+          alert('Error creating campaign: ' + err.message);
+        }
       }
     });
   }

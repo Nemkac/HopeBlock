@@ -4,6 +4,8 @@ import { Campaign } from '../../core/models/campaing';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatDialog } from '@angular/material/dialog';
 import { CreateCampaignDialogComponent } from './components/create-campaign-dialog/create-campaign-dialog.component';
+import { WalletService } from '../../wallet.service';
+import { firstValueFrom } from 'rxjs';
 
 
 @Component({
@@ -17,22 +19,29 @@ export class CampaignsComponent implements OnInit {
   filteredCampaigns: Campaign[] = [];
   searchTerm: string = '';
   loading: boolean = false;
+  myCampaign: Campaign | null = null;
+  ethAddress: string = '';
 
   constructor(private campaignService: CampaignsService,
     private snackbar: MatSnackBar,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private walletService: WalletService
   ) { }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    await this.walletService.connectWallet();
+    this.ethAddress = await this.walletService.getCurrentAddress();
+    console.log(this.ethAddress);
     this.getCampaigns();
   }
 
-  getCampaigns(): void {
+  getCampaigns() {
     this.loading = true;
     this.campaignService.getAllCampaigns().subscribe(
       (response: Campaign[]) => {
         this.campaigns = response;
         this.filteredCampaigns = this.campaigns;
+        this.getMyCampaign();
         this.loading = false;
       },
       (error) => {
@@ -40,6 +49,16 @@ export class CampaignsComponent implements OnInit {
         this.loading = false;
       }
     );
+  }
+
+  getMyCampaign() {
+    const myCampaign = this.filteredCampaigns.find(c => c.eth_address.toLowerCase() === this.ethAddress.toLowerCase());
+    if (myCampaign) {
+      const index = this.filteredCampaigns.indexOf(myCampaign);
+      this.filteredCampaigns.splice(index, 1);
+      this.campaigns.splice(index, 1);
+      this.myCampaign = myCampaign;
+    }
   }
 
   createNewCampaign() {

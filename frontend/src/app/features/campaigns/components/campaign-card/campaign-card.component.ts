@@ -1,10 +1,12 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Campaign } from '../../../../core/models/campaing';
 import { WalletService } from '../../../../wallet.service';
 import { catchError, of, switchMap } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AmountDialogComponent } from '../amount-dialog/amount-dialog.component';
+import { CampaignsService } from '../../services/campaigns.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-campaign-card',
@@ -13,13 +15,14 @@ import { AmountDialogComponent } from '../amount-dialog/amount-dialog.component'
 })
 export class CampaignCardComponent {
   @Input() campaign!: Campaign;
+  @Input() isMine: boolean = false;
+  @Output() deleted = new EventEmitter<string>();
 
   constructor(private walletService: WalletService,
     private dialog: MatDialog,
-    private snackBar: MatSnackBar
-  ) {
-
-  }
+    private snackBar: MatSnackBar,
+    private campaignService: CampaignsService
+  ) { }
 
   getProgress(): number {
     return this.campaign.goal > 0
@@ -52,5 +55,18 @@ export class CampaignCardComponent {
         this.snackBar.open('Transaction sent successfully.', 'OK', { duration: 5000 });
       }
     });
+  }
+
+  deleteCampaign() {
+    if (!confirm('Are you sure you want to delete this campaign?')) return;
+
+    this.campaignService.deleteCampaign(this.campaign._id).subscribe(
+      (response: any) => {
+        this.deleted.emit(this.campaign._id);
+      },
+      (error: HttpErrorResponse) => {
+        console.log("Error while deleting campaign: ", error.error);
+      }
+    )
   }
 }
