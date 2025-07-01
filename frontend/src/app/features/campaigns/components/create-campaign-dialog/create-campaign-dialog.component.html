@@ -24,8 +24,8 @@
     </div>
 
     <div class="mb-3">
-      <label for="goal" class="small mb-2">Goal (ETH)</label>
-      <input formControlName="goal" id="goal" type="number" class="form-control" placeholder="Enter goal in ETH" />
+      <label for="goal" class="small mb-2">Goal (Tokens)</label>
+      <input formControlName="goal" id="goal" type="number" class="form-control" placeholder="Enter goal" />
     </div>
 
     <div class="mb-3">
@@ -83,7 +83,7 @@
   <div class="mb-3" *ngIf="showManualInput">
     <label for="eth_address" class="form-label">Ethereum Address</label>
     <input [(ngModel)]="ethAddress" id="eth_address" name="eth_address" type="text"
-           class="form-control" placeholder="Paste your Ethereum address" />
+           class="form-control" placeholder="Paste your address" />
   </div>
 
   <!-- Actions -->

@@ -28,7 +28,7 @@ exports.createCampaign = async (req, res) => {
         } = req.body;
 
         if (!name || !eth_address || !goal || !description) {
-            return res.status(400).json({ error: 'Name, ETH Address, goal and description are required!' });
+            return res.status(400).json({ error: 'Name, Address, goal and description are required!' });
         }
 
         const newCampaign = new Campaign({

@@ -10,17 +10,17 @@
 
                 <ul class="list-group list-group-flush mb-3">
                     <li class="list-group-item">
-                        🎯 <strong>Goal:</strong> {{ campaign?.goal }} ETH
+                        🎯 <strong>Goal:</strong> {{ campaign?.goal }} Tokens
                     </li>
                     <li class="list-group-item">
-                        💰 <strong>Collected (on-chain):</strong> {{ getTotalCollected() | number:'1.2-4' }} ETH
+                        💰 <strong>Collected (on-chain):</strong> {{ getTotalCollected() | number:'1.2-4' }} Tokens
                     </li>
                     <li class="list-group-item">
-                        🧾 <strong>Left:</strong> {{ getAmountLeft() | number:'1.2-4' }} ETH
+                        🧾 <strong>Left:</strong> {{ getAmountLeft() | number:'1.2-4' }} Tokens
                     </li>
 
                     <li class="list-group-item">
-                        📍 <strong>ETH:</strong>
+                        📍 <strong>Address:</strong>
                         <code class="d-block text-break">{{ campaign?.eth_address }}</code>
                     </li>
                     <li class="list-group-item">
