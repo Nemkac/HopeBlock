@@ -14,6 +14,9 @@ import { CreateCampaignDialogComponent } from './components/create-campaign-dial
 })
 export class CampaignsComponent implements OnInit {
   campaigns: Campaign[] = [];
+  filteredCampaigns: Campaign[] = [];
+  searchTerm: string = '';
+  loading: boolean = false;
 
   constructor(private campaignService: CampaignsService,
     private snackbar: MatSnackBar,
@@ -25,12 +28,16 @@ export class CampaignsComponent implements OnInit {
   }
 
   getCampaigns(): void {
+    this.loading = true;
     this.campaignService.getAllCampaigns().subscribe(
       (response: Campaign[]) => {
         this.campaigns = response;
+        this.filteredCampaigns = this.campaigns;
+        this.loading = false;
       },
       (error) => {
         this.snackbar.open(error.message, 'Ok', { duration: 5000 });
+        this.loading = false;
       }
     );
   }
@@ -46,5 +53,19 @@ export class CampaignsComponent implements OnInit {
         this.getCampaigns();
       }
     });
+  }
+
+  applySearch(): void {
+    const term = this.searchTerm.trim().toLowerCase();
+    if (!term) {
+      this.filteredCampaigns = this.campaigns;
+      return;
+    }
+
+    this.filteredCampaigns = this.campaigns.filter(c =>
+      c.name?.toLowerCase().includes(term) ||
+      c.description?.toLowerCase().includes(term) ||
+      c.eth_address?.toLowerCase().includes(term)
+    );
   }
 }

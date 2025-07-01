@@ -36,7 +36,7 @@ export class CampaignsService {
         from(campaigns).pipe(
           concatMap((campaign, index) =>
             of(campaign).pipe(
-              delay(index * 100),
+              delay(index * 60),
               switchMap(c =>
                 this.getDonations(c.eth_address).pipe(
                   map(donations => {
