@@ -11,6 +11,9 @@ HopeBlock is an open-source, non-custodial multi-chain crypto wallet focused on 
 - Nebojša Vuga
 - Nemanja Todorović
 
+- ![Alt text](https://github.com/Nemkac/HopeBlock/blob/main/logo.jpg)
+
+
 ## How to Run
 
 ### Backend
