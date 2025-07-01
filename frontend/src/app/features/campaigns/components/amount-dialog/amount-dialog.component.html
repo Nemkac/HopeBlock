@@ -1,0 +1,22 @@
+<h2 mat-dialog-title>Enter donation amount</h2>
+<form [formGroup]="form" (ngSubmit)="submit()" class="p-3">
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Token</mat-label>
+        <mat-select formControlName="token">
+            @for (token of tokens; track token) {
+            <mat-option [value]="token">{{token.name}}</mat-option>
+            }
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="w-100">
+        <mat-label>Amount</mat-label>
+        <input matInput formControlName="amount" type="number" step="0.01" min="0.01" max="100" />
+        <mat-error *ngIf="form.controls.amount.invalid">Enter valid amount (0.01 - 100)</mat-error>
+    </mat-form-field>
+
+    <div class="d-flex justify-content-end mt-3">
+        <button mat-button type="button" (click)="close()" class="mx-1">Cancel</button>
+        <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid"
+            class="btn-primary">Donate</button>
+    </div>
+</form>

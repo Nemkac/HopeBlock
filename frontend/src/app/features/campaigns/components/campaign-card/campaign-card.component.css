@@ -1,0 +1,14 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    border: solid 2px;
+    border-radius: 4px;
+    border-color: #D1D1D1;
+    background-color: #F7F7F7;
+    padding: 2rem;
+}
+
+.details-btn {
+    cursor: pointer;
+}

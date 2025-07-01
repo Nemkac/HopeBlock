@@ -1,0 +1,20 @@
+<div class="position-relative w-100 vh-100 overflow-hidden wrapper">
+    <!-- Background video -->
+    <video autoplay oncanplay="this.play()" onloadedmetadata="this.muted = true" muted loop playsinline class="position-absolute top-0 start-0 w-100 h-100 object-fit-cover z-1">
+      <source src="assets/LandingBg.mp4" type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+  
+    <!-- Dark overlay -->
+    <div class="position-absolute top-0 start-0 w-100 h-100 bg-dark opacity-50 z-1"></div>
+  
+    <!-- Foreground content -->
+    <div class="position-relative text-white d-flex flex-column justify-content-end align-items-start h-100 w-100 w-lg-60 px-4 px-md-5 py-5 z-3">
+        <h1 class="display-3 heading-h2">Empowering Humanity Through Transparent Crypto Donations</h1>
+        <p class="big">
+          HopeBlock is a Web3-powered platform that connects donors with verified humanitarian campaigns around the world.
+          Using blockchain technology, every donation is traceable, secure, and transparent — allowing you to give with confidence using your preferred cryptocurrency.
+        </p>
+        <button (click)="navigateToCampaigns()" class="btn btn-primary btn-lg mt-3 global">Explore Campaigns</button>
+    </div>
+  </div>

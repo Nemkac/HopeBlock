@@ -191,4 +191,17 @@ dist
 .history
 .ionide
 
+api/cache
+api/artifacts
+
+# TypeChain files
+api/typechain
+api/typechain-types
+
+# solidity-coverage files
+api/coverage
+api/coverage.json
+
+# Hardhat Ignition default folder for deployments against a local node
+ignition/deployments/chain-31337
 # End of https://www.toptal.com/developers/gitignore/api/node,angular,visualstudiocode
