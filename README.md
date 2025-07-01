@@ -1,6 +1,4 @@
 # HopeBlock
-
-- ![Alt text](https://github.com/Nemkac/HopeBlock/blob/main/logo.jpg)
   
 HopeBlock is an open-source, non-custodial multi-chain crypto wallet focused on **charitable donations and transparency**.
 
