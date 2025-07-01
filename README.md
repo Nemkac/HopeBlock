@@ -36,7 +36,8 @@ Access the app at: `http://localhost:4200`
 
 ## ✨ Features
 
-* Browse a list of active humanitarian campaigns
+* Browse and filter list of active humanitarian campaigns
+* Create and delete your own humanitarian campaigns
 * View detailed info for each campaign
 * Donate crypto (ETH / ERC-20 like USDC) from multiple networks
 * Fully **non-custodial**: no login, no registration, wallet remains in user control
