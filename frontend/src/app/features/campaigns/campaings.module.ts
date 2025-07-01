@@ -12,10 +12,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import {MatSelectModule} from '@angular/material/select';
+import { MatSelectModule } from '@angular/material/select';
+import { CreateCampaignDialogComponent } from './components/create-campaign-dialog/create-campaign-dialog.component';
 
 @NgModule({
-  declarations: [CampaignsComponent, CampaignCardComponent, CampaignDetailsComponent, AmountDialogComponent],
+  declarations: [CampaignsComponent, CampaignCardComponent, CampaignDetailsComponent, AmountDialogComponent, CreateCampaignDialogComponent],
   imports: [
     CommonModule,
     CampaingsRoutingModule,

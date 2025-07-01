@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MetaMaskInpageProvider } from '@metamask/providers';
 import { ethers } from 'ethers';
+import { Observable, from } from 'rxjs';
 
 declare global {
   interface Window {
